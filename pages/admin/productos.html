@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2563eb">
-  <link rel="manifest" href="/TiendaPWA-front/manifest.json">
-  <link rel="apple-touch-icon" href="/TiendaPWA-front/assets/icons/icon-192x192.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="apple-touch-icon" href="../assets/icons/icon-192x192.png">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
     rel="stylesheet">
-  <link rel="stylesheet" href="/TiendaPWA-front/css/admin.css">
+  <link rel="stylesheet" href="../css/admin.css">
 
   <title>Gestión de Productos</title>
 </head>
@@ -23,27 +23,27 @@
       <h4>Tienda UCQ</h4>
     </div>
     <div class="sidebar-menu">
-      <a href="/TiendaPWA-front/pages/admin/dashboard.html">
+      <a href="dashboard.html">
         <i class="bi bi-speedometer2"></i>
         <span>Dashboard</span>
       </a>
-      <a href="/TiendaPWA-front/pages/admin/pedidos.html">
+      <a href="pedidos.html">
         <i class="bi bi-box-seam"></i>
         <span>Pedidos</span>
       </a>
-      <a href="/TiendaPWA-front/pages/admin/productos.html" class="active">
+      <a href="productos.html" class="active">
         <i class="bi bi-box"></i>
         <span>Productos</span>
       </a>
-      <a href="/TiendaPWA-front/pages/admin/tiendas.html">
+      <a href="tiendas.html">
         <i class="bi bi-shop"></i>
         <span>Tiendas</span>
       </a>
-      <a href="/TiendaPWA-front/pages/admin/repartidores.html">
+      <a href="repartidores.html">
         <i class="bi bi-person-badge"></i>
         <span>Repartidores</span>
       </a>
-      <a href="/TiendaPWA-front/pages/admin/notificaciones.html">
+      <a href="notificaciones.html">
         <i class="bi bi-bell"></i>
         <span>Notificaciones</span>
       </a>
@@ -285,8 +285,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="/TiendaPWA-front/js/api.js"></script>
-  <script src="/TiendaPWA-front/js/app.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/app.js"></script>
   <script>
     // Variables Globales
     let allProducts = []; // Para almacenar los productos y filtrar localmente
@@ -295,14 +295,14 @@
     // --- Autenticación ---
     function checkAuth() {
       if (localStorage.getItem('user_role') !== 'admin' && localStorage.getItem('user_role') !== 'ADMIN') {
-        window.location.href = '/TiendaPWA-front/login.html';
+        window.location.href = '../login.html';
       }
       document.getElementById('user-badge').textContent = localStorage.getItem('user_name') || 'Admin';
     }
 
     function logout() {
       localStorage.clear();
-      window.location.href = '/TiendaPWA-front/login.html';
+      window.location.href = '../login.html';
     }
 
     // --- Notificaciones ---
