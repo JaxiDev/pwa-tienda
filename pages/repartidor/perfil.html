@@ -52,13 +52,13 @@
   </div>
 
   <div class="nav-tabs-custom">
-    <a href="/TiendaPWA-front/pages/repartidor/inicio.html" class="nav-link-custom">
+    <a href="inicio.html" class="nav-link-custom">
         <i class="bi bi-signpost-2"></i> Ruta
     </a>
-    <a href="/TiendaPWA-front/pages/repartidor/pedidos.html" class="nav-link-custom">
+    <a href="pedidos.html" class="nav-link-custom">
         <i class="bi bi-box-seam"></i> Paquetes
     </a>
-    <a href="/TiendaPWA-front/pages/repartidor/perfil.html" class="nav-link-custom active">
+    <a href="perfil.html" class="nav-link-custom active">
         <i class="bi bi-person"></i> Perfil
     </a>
   </div>
@@ -90,7 +90,7 @@
         const email = localStorage.getItem('user_email');
         const id = localStorage.getItem('user_id');
 
-        if (!id) window.location.href = '/TiendaPWA-front/login.html';
+        if (!id) window.location.href = '../login.html';
 
         document.getElementById('profile-name').textContent = name || 'Usuario';
         document.getElementById('profile-email').textContent = email || '';
@@ -99,7 +99,7 @@
 
     function logout() {
         localStorage.clear();
-        window.location.href = '/TiendaPWA-front/login.html';
+        window.location.href = '../login.html';
     }
 
     loadProfile();

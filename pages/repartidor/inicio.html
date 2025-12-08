@@ -7,7 +7,7 @@
   <title>Mi Ruta</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/TiendaPWA-front/css/admin.css">
+  <link rel="stylesheet" href="../css/admin.css">
   
   <style>
     :root { --primary: #f47b25; }
@@ -55,13 +55,13 @@
   </div>
 
   <div class="nav-tabs-custom">
-    <a href="/TiendaPWA-front/pages/repartidor/inicio.html" class="nav-link-custom active">
+    <a href="inicio.html" class="nav-link-custom active">
         <i class="bi bi-signpost-2"></i> Ruta
     </a>
-    <a href="/TiendaPWA-front/pages/repartidor/pedidos.html" class="nav-link-custom">
+    <a href="pedidos.html" class="nav-link-custom">
         <i class="bi bi-box-seam"></i> Paquetes
     </a>
-    <a href="/TiendaPWA-front/pages/repartidor/perfil.html" class="nav-link-custom">
+    <a href="perfil.html" class="nav-link-custom">
         <i class="bi bi-person"></i> Perfil
     </a>
   </div>
@@ -73,11 +73,11 @@
     </div>
   </div>
 
-  <script src="/TiendaPWA-front/js/api.js"></script>
-  <script src="/TiendaPWA-front/js/app.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/app.js"></script>
   <script>
     function checkAuth() {
-        if (!localStorage.getItem('user_id')) window.location.href = '/TiendaPWA-front/login.html';
+        if (!localStorage.getItem('user_id')) window.location.href = '../login.html';
         document.getElementById('user-name').textContent = localStorage.getItem('user_name');
     }
 
@@ -114,7 +114,7 @@
                             <span class="badge bg-warning text-dark rounded-pill">${count} Paquetes</span>
                         </div>
                         <p class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> ${store.address || 'Sin dirección'}</p>
-                        <button class="btn-go" onclick="window.location.href='/TiendaPWA-front/pages/repartidor/tienda-detalle.html?id=${store.id}'">
+                            <button class="btn-go" onclick="window.location.href='tienda-detalle.html?id=${store.id}'">
                             <i class="bi bi-arrow-right-circle me-1"></i> Ir a la Tienda
                         </button>
                     </div>`;

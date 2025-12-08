@@ -52,13 +52,13 @@
   </div>
 
   <div class="nav-tabs-custom">
-    <a href="/TiendaPWA-front/pages/repartidor/inicio.html" class="nav-link-custom">
+    <a href="inicio.html" class="nav-link-custom">
         <i class="bi bi-signpost-2"></i> Ruta
     </a>
-    <a href="/TiendaPWA-front/pages/repartidor/pedidos.html" class="nav-link-custom active">
+    <a href="pedidos.html" class="nav-link-custom active">
         <i class="bi bi-box-seam"></i> Paquetes
     </a>
-    <a href="/TiendaPWA-front/pages/repartidor/perfil.html" class="nav-link-custom">
+    <a href="perfil.html" class="nav-link-custom">
         <i class="bi bi-person"></i> Perfil
     </a>
   </div>
@@ -70,11 +70,11 @@
     </div>
   </div>
 
-  <script src="/TiendaPWA-front/js/api.js"></script>
-  <script src="/TiendaPWA-front/js/app.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/app.js"></script>
   <script>
     function checkAuth() {
-        if (!localStorage.getItem('user_id')) window.location.href = '/TiendaPWA-front/login.html';
+        if (!localStorage.getItem('user_id')) window.location.href = '../login.html';
         document.getElementById('user-name').textContent = localStorage.getItem('user_name');
     }
 
@@ -109,7 +109,7 @@
                             <p class="mb-1"><i class="bi bi-shop"></i> ${order.store?.name || 'Tienda'}</p>
                             <p class="mb-0 text-success fw-bold"><i class="bi bi-cash"></i> $${(order.totalPrice||0).toFixed(2)}</p>
                         </div>
-                        <button class="btn-view" onclick="window.location.href='/TiendaPWA-front/pages/repartidor/pedido-resumen.html?id=${order.id}'">
+                        <button class="btn-view" onclick="window.location.href='pedido-resumen.html?id=${order.id}'">
                             <i class="bi bi-eye"></i> Ver Detalle
                         </button>
                     </div>`;

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Registrar el Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/TiendaPWA-front/js/service-worker.js')
+    navigator.serviceWorker.register('./js/service-worker.js')
       .then(registration => {
         console.log('Service Worker registrado exitosamente:', registration);
         // Verificar actualizaciones
