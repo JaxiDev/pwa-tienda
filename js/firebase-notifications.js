@@ -24,6 +24,12 @@ const messaging = getMessaging(app);
 // VAPID Key (Web Push Certificate) - Proyecto: tiendas-ucq
 const VAPID_KEY = 'BC6RaEtdJEqWwxvEbmT6f8mkCF9zzkxQRgWKdP-q4ouGXHlOInXEFjT5rB85WvhV6tRExFUcusDTKY9bZ0qiXTk';
 
+// Calcular base dinámica para el repo (ej: "/pwa-tienda" si está en https://user.github.io/pwa-tienda/)
+const REPO_BASE = (function () {
+    const parts = location.pathname.split('/').filter(Boolean);
+    return parts.length ? `/${parts[0]}` : '';
+})();
+
 /**
  * Solicitar permiso y obtener token FCM
  */
@@ -67,16 +73,21 @@ async function requestNotificationPermission() {
  */
 async function obtenerTokenFCM() {
     try {
-        // Registrar service worker primero
+        // Registrar service worker primero (usa base dinámica)
+        let registration = null;
         if ('serviceWorker' in navigator) {
-            const registration = await navigator.serviceWorker.register('/TiendaPWA-front/firebase-messaging-sw.js');
-            console.log('Service Worker registrado:', registration);
+            try {
+                registration = await navigator.serviceWorker.register(`${REPO_BASE}/firebase-messaging-sw.js`);
+                console.log('Service Worker registrado:', registration);
+            } catch (regErr) {
+                console.error('Error registrando Service Worker:', regErr);
+            }
         }
 
-        // Obtener token
+        // Obtener token (preferir la registration retornada)
         const currentToken = await getToken(messaging, {
             vapidKey: VAPID_KEY,
-            serviceWorkerRegistration: await navigator.serviceWorker.ready
+            serviceWorkerRegistration: registration || await navigator.serviceWorker.ready
         });
 
         if (currentToken) {
@@ -102,8 +113,8 @@ function escucharNotificacionesForeground() {
         const notificationTitle = payload.notification?.title || 'Nueva notificación';
         const notificationOptions = {
             body: payload.notification?.body || '',
-            icon: '/TiendaPWA-front/img/192.png',
-            badge: '/TiendaPWA-front/img/192.png',
+            icon: `${REPO_BASE}/img/192.png`,
+            badge: `${REPO_BASE}/img/192.png`,
             tag: payload.data?.tipo || 'general',
             data: payload.data || {},
             requireInteraction: true

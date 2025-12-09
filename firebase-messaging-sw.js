@@ -25,10 +25,15 @@ messaging.onBackgroundMessage((payload) => {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
     const notificationTitle = payload.notification?.title || 'Nueva notificación';
+    // Construir URLs de recursos a partir del scope del SW
+    const origin = self.location.origin;
+    const scopePath = new URL(self.registration.scope).pathname;
+    const iconUrl = origin + scopePath + 'img/192.png';
+
     const notificationOptions = {
         body: payload.notification?.body || 'Tienes una nueva notificación',
-        icon: '/TiendaPWA-front/img/192.png',
-        badge: '/TiendaPWA-front/img/192.png',
+        icon: iconUrl,
+        badge: iconUrl,
         tag: payload.data?.tipo || 'general',
         data: payload.data || {},
         requireInteraction: true, // Permanece visible hasta que el usuario la cierre
@@ -55,9 +60,10 @@ self.addEventListener('notificationclick', (event) => {
     event.notification.close();
 
     if (event.action === 'open' || !event.action) {
-        // Abrir la PWA
-        event.waitUntil(
-            clients.openWindow('/TiendaPWA-front/index.html')
-        );
+        // Abrir la PWA usando el scope del service worker
+        const origin = self.location.origin;
+        const scopePath = new URL(self.registration.scope).pathname;
+        const openUrl = origin + scopePath + 'index.html';
+        event.waitUntil(clients.openWindow(openUrl));
     }
 });
