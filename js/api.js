@@ -1,7 +1,7 @@
 // Configuración de API
 // Detectar la URL del API automáticamente
 const API_BASE_URL =
-  "http://app-tiendaucq-env.eba-w3s5zsy2.us-east-1.elasticbeanstalk.com/api";
+  "https://app-tiendaucq-env.eba-w3s5zsy2.us-east-1.elasticbeanstalk.com/api";
 
 // Función genérica para hacer peticiones
 async function apiCall(endpoint, options = {}) {
